@@ -1,6 +1,6 @@
 #include "Header.h"
 
-void login(HashTable &ds) {
+void login(HashTable &ds, NodePtrLich& lich) {
 	Nodeptr p = new NODE;
 	cout << "Nhap SDT: ";
 	cin >> p->KH.maKH;
@@ -9,16 +9,16 @@ void login(HashTable &ds) {
 	p->link = NULL;
 	Nodeptr a = find(ds, p);
 	if (a != NULL && a->KH.quyen == guess)
-		GiaoDien(ds, a);
+		GiaoDien(ds, a,lich);
 	else if (a != NULL && a->KH.quyen == admin)
-		GiaoDienCH(ds, a);
+		GiaoDienCH(ds, a,lich);
 	else { 
 		cout << "Sai mat khau"; 
 		system("pause");
-		login(ds);
+		login(ds,lich);
 	}
 }
-void GiaoDien(HashTable &ds,Nodeptr p) {
+void GiaoDien(HashTable &ds,Nodeptr p, NodePtrLich& lich) {
 	system("cls");
 	int choose;
 	cout << "\nXin chao: " << p->KH.tenKH;
@@ -35,10 +35,10 @@ void GiaoDien(HashTable &ds,Nodeptr p) {
 		break;
 	case 3:
 		system("cls");
-		StartView(ds);
+		StartView(ds,lich);
 		break;
 	case 4:
-		Dat(p);
+		Dat(lich,p);
 		break;
 	default:
 		break;

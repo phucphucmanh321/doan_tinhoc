@@ -1,6 +1,6 @@
 ﻿#include "Header.h"
 
-void initLich(NodePtrLich lich) {
+void initLich(NodePtrLich &lich) {
 	lich = NULL;
 }
 //void XuLyLichTrinhTrongNgay(NodePtrLich lichCH) {
@@ -17,9 +17,15 @@ void InsertdatLich(NodePtrLich& ds, NodePtrLich lich_kh) {
 	if (p == NULL) {
 		p = lich_kh;
 	}
+	if (p->link == NULL)
+	{
+		p->link = lich_kh;
+		p->link->link = NULL;
+	}
 	while (p->link != NULL)
 		p = p->link;
 	p->link = lich_kh;
+	luuLich("Lich.bin", ds);
 }
 DAY getCurrentDate() {
 	// Lấy thời gian hiện tại
@@ -47,8 +53,9 @@ int chiphivanchuyen(int kc) {
 		return giatien;
 	}
 }
-void Dat(Nodeptr kh) {
+void Dat(NodePtrLich &Lich,Nodeptr kh) {
 	NodePtrLich p = new NODE_L;
+	p->link = NULL;
 	//XuLyLichTrinhTrongNgay(ds);
 	strcpy_s(p->datLich.maKH,kh->KH.maKH);
 	cout << "\nChon ca: ";
@@ -87,6 +94,7 @@ void Dat(Nodeptr kh) {
 	}
 	else
 		p->datLich.dichVuVanChuyen = KhachVanchuyen;
+	InsertdatLich(Lich, p);
 	hienThiThongTinDatLich(p);
 }
 void hienThiThongTinDatLich(NodePtrLich p) {
@@ -126,4 +134,45 @@ void hienThiThongTinDatLich(NodePtrLich p) {
 			cout << "Loi";
 			break;
 	}
+}
+
+//Save-Open file
+void luuLich(const char* filename, NodePtrLich lich) {
+	ofstream ofs(filename, ios::binary);
+	if (!ofs.is_open()) {
+		cout << "\nKhong the ghi file!";
+		return;
+	}
+	int count = 0;
+	NodePtrLich p = lich;
+	NodePtrLich temp = p;
+	while (temp != NULL) {
+		if (temp != NULL)
+			count++;
+		temp = temp->link;
+	}
+	ofs.write((char*)&count, sizeof(count));
+	while (p != NULL) {
+		ofs.write((char*)&p->datLich, sizeof(DatLich));
+		p = p->link;
+	}
+	cout << "\nDa luu vao he thong !";
+	ofs.close();
+	cout << "\nGhi thanh cong!! ";
+	system("pause");
+}
+void OpenLich(const char* filename, NodePtrLich &lich) {
+	ifstream ifs(filename, ios::binary);
+	if (!ifs.is_open()) {
+		cout << "\nKhong doc duoc file!";
+		return;
+	}
+	int count = 0;
+	ifs.read((char*)&count, sizeof(count));
+	for (int j = 0; j < count; j++) {
+		NodePtrLich p;
+		ifs.read((char*)&p, sizeof(DatLich));
+		InsertdatLich(lich, p);
+	}
+	ifs.close();
 }

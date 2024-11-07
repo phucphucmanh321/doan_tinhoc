@@ -1,7 +1,6 @@
-﻿  DatLich.cpp
-C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.39.33519\include\filesystem(12): warning STL4038: The contents of <filesystem> are available only with C++17 or later.
-  main.cpp
-C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.39.33519\include\filesystem(12): warning STL4038: The contents of <filesystem> are available only with C++17 or later.
-D:\đồ án tin học\DOANTINHOC\DOANTINHOC\main.cpp(4,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+﻿  AdminScreen.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\filesystem(13): warning STL4038: The contents of <filesystem> are available only with C++17 or later.
+  DatLich.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\filesystem(13): warning STL4038: The contents of <filesystem> are available only with C++17 or later.
   Generating Code...
-  DOANTINHOC.vcxproj -> D:\đồ án tin học\DOANTINHOC\x64\Debug\DOANTINHOC.exe
+  doantinhoc.vcxproj -> C:\Users\Admin\Desktop\Cấu trúc dữ liệu & Thuật giải\doantinhoc\x64\Debug\doantinhoc.exe

@@ -7,6 +7,7 @@ void main() {
 	docStructTuFile("file1.bin", ds);
 	NodePtrLich lich=new NODE_L;
 	initLich(lich);
+	OpenLich("Lich.bin", lich);
 	/*Nodeptr p = new NODE;
 	p->link = NULL;
 	strcpy_s(p->KH.maKH, "0777508199");
@@ -15,5 +16,5 @@ void main() {
 	p->KH.quyen = admin;
 	insert(ds, p);
 	ghiStructVaoFile("file1.bin", ds);*/
-	StartView(ds);
+	StartView(ds, lich);
 }

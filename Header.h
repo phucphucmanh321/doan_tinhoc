@@ -83,7 +83,7 @@ bool xoa(HashTable& ds);
 
 // User management functions
 void Dangki(HashTable& ds);
-void login(HashTable& ds);
+void login(HashTable& ds, NodePtrLich& lich);
 bool CheckPhoneNumExist(HashTable ds, const char sdt[]);
 bool CheckPhoneNum(const char a[]);
 
@@ -92,17 +92,18 @@ void ghiStructVaoFile(const char* filename, HashTable ds);
 void docStructTuFile(const char* filename, HashTable& ds);
 
 // Interface and Display functions
-void GiaoDien(HashTable& ds, Nodeptr a);
-void GiaoDienCH(HashTable& ds, Nodeptr p);
+void GiaoDien(HashTable& ds, Nodeptr a, NodePtrLich& lich);
+void GiaoDienCH(HashTable& ds, Nodeptr p, NodePtrLich& lich);
 void Xuat(HashTable ds);
 
 // View-related functions
 void ViewInfo(Nodeptr p);
-void StartView(HashTable& ds);
+void StartView(HashTable& ds, NodePtrLich& lich);
 
 //Lam viec voi lich trinh
-void initLich(NodePtrLich lich);
-void InsertDatLich(NodePtrLich& ds, Nodeptr lich_kh);
-void Dat(Nodeptr kh);
+void initLich(NodePtrLich &lich);
+void InsertdatLich(NodePtrLich& ds, NodePtrLich lich_kh);
+void Dat(NodePtrLich& Lich, Nodeptr kh);
 void hienThiThongTinDatLich(NodePtrLich p);
-
+void OpenLich(const char* filename, NodePtrLich& lich);
+void luuLich(const char* filename, NodePtrLich lich);

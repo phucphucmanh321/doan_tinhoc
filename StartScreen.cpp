@@ -1,6 +1,6 @@
 #include "Header.h">
 
-void StartView(HashTable& ds) {
+void StartView(HashTable& ds, NodePtrLich& lich) {
 	
 
 	int choose;
@@ -10,12 +10,12 @@ void StartView(HashTable& ds) {
 	cin >> choose;
 	switch (choose) {
 	case 1:
-		login(ds);
+		login(ds,lich);
 		break;
 	case 2:
 		Dangki(ds);
 		system("cls");
-		StartView(ds);
+		StartView(ds,lich);
 		break;
 	default:
 		break;
