@@ -5,7 +5,7 @@ void login(HashTable &ds) {
 	cout << "Nhap SDT: ";
 	cin >> p->KH.maKH;
 	cout << "Mat khau: ";
-	cin >> p->KH.matkhau;
+	cin >> p->KH.matKhau;
 	p->link = NULL;
 	Nodeptr a = find(ds, p);
 	if (a != NULL && a->KH.quyen == guess)
@@ -21,7 +21,7 @@ void login(HashTable &ds) {
 void GiaoDien(HashTable &ds,Nodeptr p) {
 	system("cls");
 	int choose;
-	cout << "\nXin chao: " << p->KH.tenkh;
+	cout << "\nXin chao: " << p->KH.tenKH;
 	cout << "\nSDT: "<<p->KH.maKH;
 	cout << "\n1. Doi mat khau";
 	cout << "\n2. Doi SDT";
@@ -36,6 +36,9 @@ void GiaoDien(HashTable &ds,Nodeptr p) {
 	case 3:
 		system("cls");
 		StartView(ds);
+		break;
+	case 4:
+		Dat(p);
 		break;
 	default:
 		break;

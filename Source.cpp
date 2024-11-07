@@ -46,7 +46,7 @@ Nodeptr find(HashTable table, Nodeptr p) {
     int index = hash_funct(p->KH.maKH);
     Nodeptr p1 = table.HashTable[index];
     while (p1 != NULL) {
-        if (!strcmp(p1->KH.maKH, p->KH.maKH) && !strcmp(p1->KH.matkhau, p->KH.matkhau)) {
+        if (!strcmp(p1->KH.maKH, p->KH.maKH) && !strcmp(p1->KH.matKhau, p->KH.matKhau)) {
             p1->link = NULL;
             return p1;
         }
@@ -113,9 +113,9 @@ void Dangki(HashTable& ds) {
     }
     cin.ignore();
     cout << "Nhap ho ten: ";
-    cin.getline(kh->KH.tenkh, 50);
+    cin.getline(kh->KH.tenKH, 50);
     cout << "Mat khau: ";
-    cin >> kh->KH.matkhau;
+    cin >> kh->KH.matKhau;
     kh->KH.quyen = guess;
     if (insert(ds, kh)) {
         ghiStructVaoFile("file1.bin", ds);
@@ -173,20 +173,20 @@ void docStructTuFile(const char* filename, HashTable& ds) {
 // Display Functions
 void ViewInfo(Nodeptr p) {
     cout << "\nSDT: " << p->KH.maKH;
-    cout << "\nHo ten khach hang: " << p->KH.tenkh;
-    cout << "\nMat khau: " << p->KH.matkhau;
+    cout << "\nHo ten khach hang: " << p->KH.tenKH;
+    cout << "\nMat khau: " << p->KH.matKhau;
     system("pause");
 }
 
 void Xuat(HashTable ds) {
     cout << "\nDanh sach khach hang: "<<endl;
-    cout << setw(20) << left << "SDT" << "|\t" <<setw(30) << left << "Ho ten KH" << "|\t" << setw(30) << right << "MatKhau" << endl;
+    cout << setw(20) << left << "SDT" << "|\t" <<setw(30) << left << "Ho ten KH" << "|\t" << setw(30) << right << "matKhau" << endl;
     for (int i = 0; i < MAX; i++) {
         Nodeptr p = ds.HashTable[i];
         while (p != NULL) {
             cout << setw(20)<< left << p->KH.maKH  ;
-            cout <<"|\t"<< setw(30) << left << p->KH.tenkh;
-            cout<< "|\t"<<setw(30) << right << p->KH.matkhau;
+            cout <<"|\t"<< setw(30) << left << p->KH.tenKH;
+            cout<< "|\t"<<setw(30) << right << p->KH.matKhau;
             p = p->link;
         }
     }

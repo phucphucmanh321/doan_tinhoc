@@ -4,28 +4,49 @@
 #include <string>
 #include <fstream>
 #include <iomanip>
+#include <filesystem>
 using namespace std;
+// Constants
+const int MAX = 10;
+const int SoTho = 10;
+//DAY
+struct DAY {
+	int Gio;
+	int Ngay;
+	int Thang;
+	int Nam;
+};
+enum DVVanChuyen {
+	CHVanchuyen,
+	KhachVanchuyen
+};
+enum TrangThai {
+	Dangxuly,
+	Hoanthanh
+};
 enum loaixe {
 	tayga,
 	xeso
 };
 struct DatLich {
 	char maKH[11];
-	int Ca;
-	time_t NgayDat;
-	char tinhtrang[50];
-	char tenxe[50];
-	int doixe;
-	loaixe loaixe;
-	float thoigiandukien;
+	int ca;
+	char tinhTrang[50];
+	char tenXe[50];
+	int doiXe;
+	loaixe loaiXe;
+	DAY ngayDat;
+	DVVanChuyen dichVuVanChuyen;
+	int khoangcach;
+	float thoiGianDuKien;
+	TrangThai trangThai;
 };
 struct NODE_L {
-	DatLich datlich;
+	DatLich datLich;
 	NODE_L* link;
 };
 typedef NODE_L* NodePtrLich;
-// Constants
-const int MAX = 10;
+
 
 // Enum for user permissions
 enum PhanQuyen {
@@ -36,8 +57,8 @@ enum PhanQuyen {
 // Struct definitions
 struct Khachhang {
     char maKH[11];
-    char tenkh[50];
-    char matkhau[50];
+    char tenKH[50];
+    char matKhau[50];
     PhanQuyen quyen;
 };
 
@@ -81,3 +102,7 @@ void StartView(HashTable& ds);
 
 //Lam viec voi lich trinh
 void initLich(NodePtrLich lich);
+void InsertDatLich(NodePtrLich& ds, Nodeptr lich_kh);
+void Dat(Nodeptr kh);
+void hienThiThongTinDatLich(NodePtrLich p);
+

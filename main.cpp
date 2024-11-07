@@ -1,9 +1,11 @@
 ﻿#include "Header.h"
+
+
 void main() {
 	HashTable ds;
 	initializeHashTable(ds);
 	docStructTuFile("file1.bin", ds);
-	NodePtrLich lich;
+	NodePtrLich lich=new NODE_L;
 	initLich(lich);
 	/*Nodeptr p = new NODE;
 	p->link = NULL;

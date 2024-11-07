@@ -3,7 +3,7 @@
 void GiaoDienCH(HashTable& ds, Nodeptr p) {
 	system("cls");
 	int choose;
-	cout << "\nXin chao cua hang truong: " << p->KH.tenkh;
+	cout << "\nXin chao cua hang truong: " << p->KH.tenKH;
 	cout << "\nSDT: " << p->KH.maKH;
 	cout << "\n1. Xoa";
 	cout << "\n2. Them";

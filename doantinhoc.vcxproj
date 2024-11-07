@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{b1afd120-2d01-4424-b069-d42fed297924}</ProjectGuid>
+    <ProjectGuid>{06D3AE2D-CDD7-41FC-B333-946D2892A63E}</ProjectGuid>
     <RootNamespace>doantinhoc</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
