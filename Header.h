@@ -107,3 +107,4 @@ void Dat(NodePtrLich& Lich, Nodeptr kh);
 void hienThiThongTinDatLich(NodePtrLich p);
 void OpenLich(const char* filename, NodePtrLich& lich);
 void luuLich(const char* filename, NodePtrLich lich);
+NodePtrLich taonodeLich(DatLich data);

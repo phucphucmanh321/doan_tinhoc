@@ -26,6 +26,7 @@ void GiaoDien(HashTable &ds,Nodeptr p, NodePtrLich& lich) {
 	cout << "\n1. Doi mat khau";
 	cout << "\n2. Doi SDT";
 	cout << "\n3. Dang Xuat";
+	cout << "\n4. Dat lich hen";
 	cout << "\nChon chuc nang: ";
 	cin >> choose;
 	switch (choose) {
@@ -39,6 +40,7 @@ void GiaoDien(HashTable &ds,Nodeptr p, NodePtrLich& lich) {
 		break;
 	case 4:
 		Dat(lich,p);
+		StartView(ds, lich);
 		break;
 	default:
 		break;

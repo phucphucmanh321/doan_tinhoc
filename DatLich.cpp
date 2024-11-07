@@ -2,6 +2,12 @@
 
 void initLich(NodePtrLich &lich) {
 	lich = NULL;
+} 
+NodePtrLich taonodeLich(DatLich data) {
+	NodePtrLich lich = new NODE_L;
+	lich->datLich = data;
+	lich->link = NULL;
+	return lich;
 }
 //void XuLyLichTrinhTrongNgay(NodePtrLich lichCH) {
 //	string tinhtrang;
@@ -13,19 +19,23 @@ void initLich(NodePtrLich &lich) {
 //	}
 //}
 void InsertdatLich(NodePtrLich& ds, NodePtrLich lich_kh) {
-	NodePtrLich p = ds;
-	if (p == NULL) {
-		p = lich_kh;
-	}
-	if (p->link == NULL)
+	NodePtrLich p	= taonodeLich(lich_kh->datLich);
+	if (ds == NULL)
 	{
-		p->link = lich_kh;
-		p->link->link = NULL;
+		ds = p;
+		return;
 	}
-	while (p->link != NULL)
-		p = p->link;
-	p->link = lich_kh;
-	luuLich("Lich.bin", ds);
+	if (ds->link == NULL)
+	{
+		ds->link = p;
+		return;
+	}
+	else {
+		NodePtrLich temp = ds;
+		while (temp->link != NULL)
+			temp = temp->link;
+		temp->link = p;
+	}
 }
 DAY getCurrentDate() {
 	// Lấy thời gian hiện tại
@@ -95,36 +105,41 @@ void Dat(NodePtrLich &Lich,Nodeptr kh) {
 	else
 		p->datLich.dichVuVanChuyen = KhachVanchuyen;
 	InsertdatLich(Lich, p);
-	hienThiThongTinDatLich(p);
+	luuLich("Lich.bin", Lich);
 }
-void hienThiThongTinDatLich(NodePtrLich p) {
-	float thoigiandukien=0;
-	cout << "\nMa khach hang: " << p->datLich.maKH;
-	cout << "\nCa da chon: " << p->datLich.ca;
-	cout << "\nTinh trang: " << p->datLich.tinhTrang;
-	cout << "\nTen xe: " << p->datLich.tenXe;
-	cout << "\nDoi xe: " << p->datLich.doiXe;
-	cout << "\nNgay dat: " << p->datLich.ngayDat.Ngay<<"/"
-		<<p->datLich.ngayDat.Thang<<"/"<< p->datLich.ngayDat.Nam;
-	cout << "\nDich vu van chuyen: ";
-	switch (p->datLich.dichVuVanChuyen) {
-	case CHVanchuyen:
-		cout << "\nCua hang van chuyen.";
-		break;
-	default:
-		cout << "\nLoi bien dich";
-		break;
-	}
-	if (p->datLich.dichVuVanChuyen == CHVanchuyen)
+void hienThiThongTinDatLich(NodePtrLich kh) {
+	int count = 0;
+	NodePtrLich p = kh;
+	while(p!=NULL)
 	{
-		cout << "\nKhoang cach van chuyen: " << p->datLich.khoangcach;
-		cout << "\nChi phi van chuyen: " << chiphivanchuyen(p->datLich.khoangcach);
-	}
-	cout << "\nThoi gian du kien:" << thoigiandukien;
-	cout << "\nTrang thai: ";
-	switch(p->datLich.trangThai)
-	{
-	case Dangxuly:
+		cout << "\nSTT:" << count++;
+		float thoigiandukien = 0;
+		cout << "\nMa khach hang: " << p->datLich.maKH;
+		cout << "\nCa da chon: " << p->datLich.ca;
+		cout << "\nTinh trang: " << p->datLich.tinhTrang;
+		cout << "\nTen xe: " << p->datLich.tenXe;
+		cout << "\nDoi xe: " << p->datLich.doiXe;
+		cout << "\nNgay dat: " << p->datLich.ngayDat.Ngay << "/"
+			<< p->datLich.ngayDat.Thang << "/" << p->datLich.ngayDat.Nam;
+		cout << "\nDich vu van chuyen: ";
+		switch (p->datLich.dichVuVanChuyen) {
+		case CHVanchuyen:
+			cout << "\nCua hang van chuyen.";
+			break;
+		default:
+			cout << "\nLoi bien dich";
+			break;
+		}
+		if (p->datLich.dichVuVanChuyen == CHVanchuyen)
+		{
+			cout << "\nKhoang cach van chuyen: " << p->datLich.khoangcach;
+			cout << "\nChi phi van chuyen: " << chiphivanchuyen(p->datLich.khoangcach);
+		}
+		cout << "\nThoi gian du kien:" << thoigiandukien;
+		cout << "\nTrang thai: ";
+		switch (p->datLich.trangThai)
+		{
+		case Dangxuly:
 			cout << "He thong dang xu ly";
 			break;
 		case Hoanthanh:
@@ -133,6 +148,8 @@ void hienThiThongTinDatLich(NodePtrLich p) {
 		default:
 			cout << "Loi";
 			break;
+		}
+		p = p->link;
 	}
 }
 
@@ -170,9 +187,13 @@ void OpenLich(const char* filename, NodePtrLich &lich) {
 	int count = 0;
 	ifs.read((char*)&count, sizeof(count));
 	for (int j = 0; j < count; j++) {
-		NodePtrLich p;
-		ifs.read((char*)&p, sizeof(DatLich));
-		InsertdatLich(lich, p);
+		DatLich lichKH;
+		ifs.read((char*)&lichKH, sizeof(DatLich));
+		NodePtrLich temp = new NODE_L;
+		temp->datLich = lichKH;
+		temp->link = NULL;
+		InsertdatLich(lich, temp);
 	}
+	cout << "\nDoc thanh cong !";
 	ifs.close();
 }

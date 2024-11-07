@@ -5,7 +5,8 @@ void main() {
 	HashTable ds;
 	initializeHashTable(ds);
 	docStructTuFile("file1.bin", ds);
-	NodePtrLich lich=new NODE_L;
+	NodePtrLich lich;
+	lich = new NODE_L;
 	initLich(lich);
 	OpenLich("Lich.bin", lich);
 	/*Nodeptr p = new NODE;
